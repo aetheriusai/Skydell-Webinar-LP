@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skydell Medical — Physician Webinar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-mid: #0a0a0a;
+            --black-light: #111111;
+            --black-card: #0f0f0f;
+            --teal: #2ec4b6;
+            --teal-dark: #25a79b;
+            --teal-glow: rgba(46, 196, 182, 0.12);
+            --urgent-red: #ff4d4f;
+            --urgent-red-glow: rgba(255, 77, 79, 0.15);
+            --white: #ffffff;
+            --text-on-dark: #b0bfcf;
+            --text-bright: #dce4ec;
+            --text-secondary: #4a6180;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-teal: rgba(46, 196, 182, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--white);
+            background: var(--black);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10% { transform: translateX(-4px) rotate(-0.5deg); }
+            20% { transform: translateX(4px) rotate(0.5deg); }
+            30% { transform: translateX(-4px) rotate(-0.5deg); }
+            40% { transform: translateX(4px) rotate(0.5deg); }
+            50% { transform: translateX(-2px); }
+            60% { transform: translateX(2px); }
+            70% { transform: translateX(0); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(46, 196, 182, 0); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ── URGENCY BAR ── */
+        .urgency-bar {
+            background: var(--urgent-red);
+            padding: 10px 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .urgency-bar .blink {
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            padding: 56px 24px 44px;
+            text-align: center;
+            background: var(--black);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(ellipse at 40% 30%, var(--teal-glow) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            max-width: 760px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 18px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--urgent-red);
+            border: 1px solid rgba(255, 77, 79, 0.3);
+            border-radius: 100px;
+            margin-bottom: 28px;
+            background: var(--urgent-red-glow);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.18;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        h1 .highlight {
+            color: var(--teal);
+        }
+
+        h1 .underline {
+            text-decoration: underline;
+            text-decoration-color: var(--white);
+            text-underline-offset: 6px;
+            text-decoration-thickness: 3px;
+        }
+
+        .subheadline {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--text-on-dark);
+            max-width: 580px;
+            margin: 0 auto 36px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--teal);
+            color: var(--black);
+            padding: 18px 44px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.25s ease;
+            letter-spacing: 0.01em;
+            animation: shake 3s ease-in-out infinite, pulse-glow 2s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            background: var(--teal-dark);
+            animation: none;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(46, 196, 182, 0.3);
+        }
+
+        .seat-note {
+            display: block;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: rgba(176, 191, 207, 0.6);
+            font-weight: 400;
+        }
+
+        .seat-note .red {
+            color: var(--urgent-red);
+            font-weight: 600;
+        }
+
+        /* ── SECTION SHARED ── */
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--teal);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        /* ── ACCORDION ── */
+        .accordion-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            background: var(--black-card);
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .accordion-trigger:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .accordion-trigger-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+        }
+
+        .accordion-num {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--teal);
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            width: 24px;
+        }
+
+        .accordion-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.35;
+        }
+
+        .accordion-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-icon line {
+            stroke: rgba(176, 191, 207, 0.4);
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .accordion-item.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .accordion-body-inner {
+            padding: 0 24px 20px 62px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-on-dark);
+        }
+
+        /* ── WHO IS THIS FOR (accordion) ── */
+        .who-section {
+            background: var(--black-mid);
+            border-top: 1px solid var(--border);
+        }
+
+        .who-accordion-item {
+            background: var(--black-card);
+        }
+
+        .who-trigger-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .who-check {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(46, 196, 182, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .who-check svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--teal);
+        }
+
+        .who-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-bright);
+            line-height: 1.4;
+        }
+
+        .who-body-inner {
+            padding: 0 24px 18px 56px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-on-dark);
+        }
+
+        /* ── PRESENTER / AUTHORITY ── */
+        .presenter-section {
+            background: var(--black);
+            border-top: 1px solid var(--border);
+        }
+
+        .presenter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .presenter-card {
+            background: var(--black-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px 28px;
+            text-align: center;
+        }
+
+        .presenter-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(46, 196, 182, 0.08);
+            border: 2px solid var(--border-teal);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .presenter-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .presenter-title {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+
+        .presenter-bio {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-on-dark);
+        }
+
+        .presenter-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: rgba(176, 191, 207, 0.4);
+        }
+
+        /* ── BOTTOM CTA ── */
+        .bottom-cta {
+            background: var(--black);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 44px 24px 56px;
+        }
+
+        .bottom-cta h2 {
+            margin-bottom: 8px;
+        }
+
+        .bottom-cta .subheadline {
+            margin-bottom: 32px;
+        }
+
+        .urgency-line {
+            display: inline-block;
+            background: var(--urgent-red-glow);
+            border: 1px solid rgba(255, 77, 79, 0.25);
+            color: var(--urgent-red);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* ── MODAL ── */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 44px 36px 36px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 16px; right: 20px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover { color: #333; }
+
+        .modal-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 6px;
+        }
+
+        .modal-content .form-sub {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal-urgency {
+            background: #fff5f5;
+            border: 1px solid rgba(255, 77, 79, 0.2);
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--urgent-red);
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            margin: 0 0 12px;
+            border: 1px solid #dde2e8;
+            border-radius: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            color: #111;
+            transition: border-color 0.2s;
+            background: #fafbfc;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--teal);
+            background: var(--white);
+        }
+
+        input::placeholder { color: #a0aec0; }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--teal);
+            color: var(--black);
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: all 0.25s ease;
+        }
+
+        .submit-btn:hover { background: var(--teal-dark); }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.72rem;
+            color: #999;
+            margin-top: 14px;
+        }
+
+        /* ── STICKY CTA BAR ── */
+        .sticky-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 900;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-bar.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-bar-text {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+
+        .sticky-bar-text .red {
+            color: var(--urgent-red);
+            font-weight: 700;
+        }
+
+        .sticky-bar .cta-button {
+            padding: 10px 28px;
+            font-size: 0.85rem;
+            animation: none;
+        }
+
+        .sticky-bar .cta-button.sticky-cta-shake {
+            animation: shake 3s ease-in-out infinite;
+        }
+
+        .sticky-bar .cta-button.sticky-cta-shake:hover {
+            animation: none;
+        }
+
+        .sticky-bar .cta-button:hover {
+            transform: none;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            padding: 28px 24px;
+            font-size: 0.72rem;
+            color: rgba(176, 191, 207, 0.3);
+            background: var(--black);
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 44px 20px 36px; }
+            .presenter-grid { grid-template-columns: 1fr; }
+            .accordion-body-inner { padding-left: 24px; }
+            .who-body-inner { padding-left: 24px; }
+            .modal-content { margin: 16px; padding: 32px 24px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+        <span class="blink">&#x1F6A8;</span> &nbsp;Quick! Your spot is reserved for <span id="bar-timer" style="font-weight:900; letter-spacing:0.03em;">10:00</span>&nbsp; <span class="blink">&#x1F6A8;</span>
+    </div>
+
+    <!-- STICKY CTA BAR (appears on scroll) -->
+    <div class="sticky-bar" id="stickyBar">
+        <span class="sticky-bar-text">Spot reservation expires in <span class="red" id="sticky-timer">10:00</span></span>
+        <button class="cta-button sticky-cta-shake" onclick="openModal()">Reserve My Seat</button>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-inner">
+            <span class="badge">&#x203C;&#xFE0F; Free Physician Masterclass — April 10, 2026 — 20 Seats Only</span>
+
+            <h1>How Clinics Are Adding and Scaling Regenerative Medicine Services <span class="highlight">in 14 Days</span> <span class="underline">Without Compliance Risk or Operational Guesswork</span></h1>
+
+            <p class="subheadline">Join a free physician-only masterclass and learn the infrastructure system powering the fastest-growing regenerative clinics in the country.</p>
+
+            <div style="display:inline-block; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:8px 20px; margin-bottom:20px; font-size:0.85rem; font-weight:600; color:var(--white); letter-spacing:0.02em;">April 10, 2026 &nbsp;·&nbsp; 12:00 PM EST</div>
+            <br>
+            <button class="cta-button" onclick="openModal()">Reserve My Seat Now</button>
+            <span class="seat-note"><span class="red"><span id="hero-spots">14</span> of 20 spots remaining.</span> Registration closes when they fill.</span>
+        </div>
+    </header>
+
+    <!-- WHAT YOU'LL LEARN -->
+    <section class="learn-section" style="background: var(--black-mid); border-top: 1px solid var(--border);">
+        <div class="content-section">
+            <div class="section-label">What You'll Learn</div>
+            <h2>The infrastructure system most clinics never get access to.</h2>
+
+            <div class="accordion-list">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">01</span>
+                            <span class="accordion-title">Plug-and-Play Patient Acquisition</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">How partner clinics generate patient demand from day one using a built-in acquisition system — without hiring a marketing team or building campaigns from scratch.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">02</span>
+                            <span class="accordion-title">The Compliance Backbone</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">How HCT/P 361 guidelines and licensed 503A pharmacy sourcing protect your license and your patients. We walk through the regulatory framework most clinics get wrong.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">03</span>
+                            <span class="accordion-title">The 14-Day Activation Model</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">The operational system that takes a clinic from zero regenerative capability to a fully active service line in two weeks — training, sourcing, and patient workflows included.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">04</span>
+                            <span class="accordion-title">The Full Infrastructure Stack</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">Practice management software, clinical protocols, fulfillment logistics, and ongoing support. The complete operational picture from onboarding through first patient.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IS THIS FOR -->
+    <section class="who-section">
+        <div class="content-section">
+            <div class="section-label">Who This Is For</div>
+            <h2>Built for clinic owners and medical directors ready to move.</h2>
+
+            <div class="accordion-list">
+                <div class="accordion-item who-accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="who-trigger-left">
+                            <div class="who-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></div>
+                            <span class="who-title">Clinic owners exploring regenerative medicine</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="who-body-inner">You know the opportunity is there but you're unsure where to start operationally. This webinar walks through the exact infrastructure so you don't have to figure it out alone.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item who-accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="who-trigger-left">
+                            <div class="who-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></div>
+                            <span class="who-title">Orthopedic, pain management, and sports medicine practices</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="who-body-inner">Regenerative services are a natural extension of what you already do. We cover how to add them without disrupting existing patient workflows or clinical schedules.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item who-accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="who-trigger-left">
+                            <div class="who-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></div>
+                            <span class="who-title">Aesthetic and wellness clinic medical directors</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="who-body-inner">Adding regenerative services to an existing aesthetic or wellness practice is one of the most natural expansion paths available. We break down the operational playbook.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item who-accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="who-trigger-left">
+                            <div class="who-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></div>
+                            <span class="who-title">Physicians moving toward cash-pay models</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="who-body-inner">If insurance dependence is limiting your practice, regenerative medicine offers a high-margin cash-pay service line. We cover how the infrastructure supports that transition.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item who-accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="who-trigger-left">
+                            <div class="who-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></div>
+                            <span class="who-title">Chiropractors expanding into regenerative modalities</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="who-body-inner">Compliance guidance, sourcing, and clinical workflow support built specifically for practitioners expanding their scope into advanced regenerative services.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item who-accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="who-trigger-left">
+                            <div class="who-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg></div>
+                            <span class="who-title">Practice managers evaluating infrastructure partners</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="who-body-inner">If you're the one doing the operational research for a new revenue vertical, this session gives you the full infrastructure picture to bring back to your medical director.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESENTER / AUTHORITY -->
+    <!-- =============================================
+         VARIABLE PLACEHOLDERS — REPLACE BEFORE LAUNCH
+         ============================================= -->
+    <section class="presenter-section">
+        <div class="content-section">
+            <div class="section-label">Your Presenter</div>
+            <h2>Hosted by the physician behind the platform.</h2>
+
+            <div class="presenter-grid" style="grid-template-columns: 1fr; max-width: 480px; margin: 0 auto;">
+                <div class="presenter-card">
+                    <!-- REPLACE: Swap initials div for <img> tag with headshot -->
+                    <div class="presenter-avatar">FL</div>
+                    <!-- REPLACE: Full name -->
+                    <div class="presenter-name">[Dr. Felix Lurye]</div>
+                    <!-- REPLACE: Title / credential line -->
+                    <div class="presenter-title">[Title / Credential — e.g. "Medical Director, Skydell Medical"]</div>
+                    <!-- REPLACE: 1-2 sentence bio focused on authority -->
+                    <p class="presenter-bio">[Bio placeholder — e.g. "Co-architect of Florida's regenerative medicine compliance framework. XX years in regenerative medicine. Licensed in XX states."]</p>
+                </div>
+            </div>
+
+            <div class="presenter-note">Replace bracketed content with final bio and swap avatar div for headshot image before launch.</div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="bottom-cta">
+        <div class="urgency-line">&#x1F6A8; Spots are filling — don't wait &#x1F6A8;</div>
+        <h2>20 seats. One session. No replay.</h2>
+        <p class="subheadline">This is a live, physician-only masterclass. If you're serious about adding regenerative services to your clinic, this is the most efficient way to understand what it takes.</p>
+        <button class="cta-button" onclick="openModal()">Reserve My Seat Now</button>
+        <span class="seat-note">April 10, 2026 — 12:00 PM EST</span>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        &copy; 2026 Skydell Medical, LLC. All rights reserved. This webinar is educational in nature and does not constitute medical advice.
+    </div>
+
+    <!-- MODAL -->
+    <div id="regModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h3>Register for the Masterclass</h3>
+            <p class="form-sub">This session is for licensed physicians and clinic decision-makers only. Enter your details below to receive your access link.</p>
+
+            <div class="modal-urgency">&#x1F6A8; <span id="modal-spots">14</span> of 20 spots remaining — secure yours now</div>
+
+            <form action="#" onsubmit="return false;">
+                <input type="text" placeholder="Full Name" required>
+                <input type="text" placeholder="Clinic Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit" class="submit-btn">Complete Registration</button>
+            </form>
+            <div class="form-note">Your information is confidential and will only be used to send your webinar access details.</div>
+        </div>
+    </div>
+
+    <script>
+        // ── SPOTS REMAINING (update this number manually) ──
+        const SPOTS_REMAINING = 14;
+        document.getElementById('modal-spots').textContent = SPOTS_REMAINING;
+        document.getElementById('hero-spots').textContent = SPOTS_REMAINING;
+
+        // ── 10-MINUTE RESERVATION COUNTDOWN ──
+        let reservationSeconds = 10 * 60;
+        const barTimer = document.getElementById('bar-timer');
+        const stickyTimer = document.getElementById('sticky-timer');
+
+        function updateReservationTimer() {
+            if (reservationSeconds <= 0) {
+                barTimer.textContent = '0:00';
+                stickyTimer.textContent = '0:00';
+                return;
+            }
+            reservationSeconds--;
+            const m = Math.floor(reservationSeconds / 60);
+            const s = reservationSeconds % 60;
+            const display = m + ':' + String(s).padStart(2, '0');
+            barTimer.textContent = display;
+            stickyTimer.textContent = display;
+        }
+
+        setInterval(updateReservationTimer, 1000);
+
+        // ── ACCORDION ──
+        function toggleAccordion(trigger) {
+            const item = trigger.closest('.accordion-item');
+            const body = item.querySelector('.accordion-body');
+            const isOpen = item.classList.contains('open');
+
+            if (isOpen) {
+                body.style.maxHeight = null;
+                item.classList.remove('open');
+            } else {
+                body.style.maxHeight = body.scrollHeight + 'px';
+                item.classList.add('open');
+            }
+        }
+
+        // ── MODAL ──
+        function openModal() {
+            document.getElementById('regModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('regModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('regModal');
+            if (event.target === modal) closeModal();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ── STICKY BAR (show after scrolling past hero CTA) ──
+        const stickyBar = document.getElementById('stickyBar');
+        const heroCta = document.querySelector('.hero .cta-button');
+
+        window.addEventListener('scroll', function() {
+            if (!heroCta) return;
+            const ctaBottom = heroCta.getBoundingClientRect().bottom;
+            if (ctaBottom < 0) {
+                stickyBar.classList.add('visible');
+            } else {
+                stickyBar.classList.remove('visible');
+            }
+        });
+
+        // ── EXIT INTENT ──
+        let exitIntentFired = false;
+
+        document.addEventListener('mouseout', function(e) {
+            if (exitIntentFired) return;
+            if (e.clientY <= 0 && e.relatedTarget === null) {
+                const modal = document.getElementById('regModal');
+                if (modal.style.display !== 'flex') {
+                    exitIntentFired = true;
+                    openModal();
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
