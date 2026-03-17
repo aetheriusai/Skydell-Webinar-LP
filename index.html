@@ -126,7 +126,7 @@
             color: var(--teal);
         }
 
-        h1 .underline {
+        .underline {
             text-decoration: underline;
             text-decoration-color: var(--white);
             text-underline-offset: 6px;
@@ -490,30 +490,6 @@
             text-align: center;
         }
 
-        /* Modal value stack — updated for paid registration positioning */
-        .modal-value-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 16px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .modal-value-list li {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 6px;
-        }
-
-        .modal-value-bullet {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--teal);
-            flex-shrink: 0;
-        }
-
         input {
             width: 100%;
             padding: 13px 14px;
@@ -849,7 +825,7 @@
     <section class="who-section">
         <div class="content-section">
             <div class="section-label">Who This Is For</div>
-            <h2>Built for clinic owners and medical directors ready to move.</h2>
+            <h2>Built for clinic owners and medical directors <span class="underline">ready to move</span>.</h2>
 
             <div class="accordion-list">
                 <div class="accordion-item who-accordion-item">
@@ -981,17 +957,9 @@
             <button class="close-btn" onclick="closeModal()">&times;</button>
             <!-- Updated for paid registration positioning -->
             <h3>Complete Your Registration</h3>
-            <p class="form-sub">This live session is for licensed physicians and clinic decision-makers only. Enter your details below to reserve your seat for the live session.</p>
+            <p class="form-sub">Enter your details below to continue.</p>
 
             <div class="modal-urgency">&#x1F6A8; <span id="modal-spots">14</span> of 20 paid seats remaining — secure yours now</div>
-
-            <!-- Compact value stack for paid masterclass -->
-            <!-- Updated for paid registration positioning -->
-            <ul class="modal-value-list">
-                <li><span class="modal-value-bullet"></span><span>Live, physician-only training focused on regenerative practice growth.</span></li>
-                <li><span class="modal-value-bullet"></span><span>Operational and compliance framework you can apply in your clinic.</span></li>
-                <li><span class="modal-value-bullet"></span><span>Focused Q&amp;A time for real implementation guidance.</span></li>
-            </ul>
 
             <form action="#" onsubmit="return false;">
                 <input type="text" placeholder="Full Name" required>
@@ -999,7 +967,7 @@
                 <input type="tel" placeholder="Phone Number" required>
                 <input type="email" placeholder="Email Address" required>
                 <!-- Updated CTA copy for paid seat flow -->
-                <button type="submit" class="submit-btn">Continue to Secure Checkout</button>
+                <button type="submit" class="submit-btn">Continue</button>
             </form>
             <!-- Updated for paid registration positioning -->
             <div class="form-note">Your information is kept confidential and used only to process your registration and send your secure session details.</div>
