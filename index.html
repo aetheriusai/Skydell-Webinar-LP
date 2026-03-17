@@ -597,12 +597,87 @@
             border-top: 1px solid var(--border);
         }
 
+        /* ── DATE / TIME STRIP ── */
+        .datetime-section {
+            background: var(--black);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px 20px;
+        }
+
+        .datetime-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .datetime-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+        }
+
+        .datetime-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .datetime-card {
+            background: #050608;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 173, 255, 0.6);
+            padding: 16px 18px 18px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .datetime-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 173, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+        }
+
+        .datetime-text-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(220, 228, 236, 0.8);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .datetime-text-main {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .datetime-text-sub {
+            font-size: 0.8rem;
+            color: var(--text-on-dark);
+            margin-top: 2px;
+        }
+
         @media (max-width: 640px) {
             .hero { padding: 44px 20px 36px; }
             .presenter-grid { grid-template-columns: 1fr; }
             .accordion-body-inner { padding-left: 24px; }
             .who-body-inner { padding-left: 24px; }
             .modal-content { margin: 16px; padding: 32px 24px 28px; }
+            .datetime-section { padding: 20px 20px 24px; }
+            .datetime-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -610,7 +685,7 @@
 
     <!-- URGENCY BAR -->
     <div class="urgency-bar">
-        <span class="blink">&#x1F6A8;</span> &nbsp;Quick! Your spot is reserved for <span id="bar-timer" style="font-weight:900; letter-spacing:0.03em;">10:00</span>&nbsp; <span class="blink">&#x1F6A8;</span>
+        <span class="blink">&#x1F6A8;</span> &nbsp;Quick! Your exclusive spot is reserved for <span id="bar-timer" style="font-weight:900; letter-spacing:0.03em;">10:00</span>&nbsp; <span class="blink">&#x1F6A8;</span>
     </div>
 
     <!-- STICKY CTA BAR (appears on scroll) -->
@@ -622,18 +697,45 @@
     <!-- HERO -->
     <header class="hero">
         <div class="hero-inner">
-            <span class="badge">&#x203C;&#xFE0F; Free Physician Masterclass — April 10, 2026 — 20 Seats Only</span>
+            <span class="badge">&#x203C;&#xFE0F; Physician Masterclass — April 10, 2026 — 20 Seats Only</span>
 
             <h1>How Clinics Are Adding and Scaling Regenerative Medicine Services <span class="highlight">in 14 Days</span> <span class="underline">Without Compliance Risk or Operational Guesswork</span></h1>
 
-            <p class="subheadline">Join a free physician-only masterclass and learn the infrastructure system powering the fastest-growing regenerative clinics in the country.</p>
+            <p class="subheadline">Join a physician-only masterclass and learn the infrastructure system powering the fastest-growing regenerative clinics in the country.</p>
 
-            <div style="display:inline-block; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:8px 20px; margin-bottom:20px; font-size:0.85rem; font-weight:600; color:var(--white); letter-spacing:0.02em;">April 10, 2026 &nbsp;·&nbsp; 12:00 PM EST</div>
-            <br>
             <button class="cta-button" onclick="openModal()">Reserve My Seat Now</button>
             <span class="seat-note"><span class="red"><span id="hero-spots">14</span> of 20 spots remaining.</span> Registration closes when they fill.</span>
         </div>
     </header>
+
+    <!-- DATE / TIME STRIP -->
+    <section class="datetime-section">
+        <div class="datetime-inner">
+            <div class="datetime-label">Session Details</div>
+            <div class="datetime-grid">
+                <div class="datetime-card">
+                    <div class="datetime-icon">
+                        &#128197;
+                    </div>
+                    <div>
+                        <div class="datetime-text-label">Date</div>
+                        <div class="datetime-text-main">Thursday, April 10, 2026</div>
+                        <div class="datetime-text-sub">Save it to your calendar now.</div>
+                    </div>
+                </div>
+                <div class="datetime-card">
+                    <div class="datetime-icon">
+                        &#128337;
+                    </div>
+                    <div>
+                        <div class="datetime-text-label">Time</div>
+                        <div class="datetime-text-main">12:00 PM Eastern</div>
+                        <div class="datetime-text-sub">9:00 AM Pacific · 5:00 PM GMT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- WHAT YOU'LL LEARN -->
     <section class="learn-section" style="background: var(--black-mid); border-top: 1px solid var(--border);">
@@ -923,9 +1025,15 @@
 
         // ── EXIT INTENT ──
         let exitIntentFired = false;
+        let exitIntentEnabled = false;
+
+        // Only enable exit-intent behavior after the visitor has been on the page for a short time
+        setTimeout(function() {
+            exitIntentEnabled = true;
+        }, 8000); // 8 seconds delay before exit-intent can trigger
 
         document.addEventListener('mouseout', function(e) {
-            if (exitIntentFired) return;
+            if (!exitIntentEnabled || exitIntentFired) return;
             if (e.clientY <= 0 && e.relatedTarget === null) {
                 const modal = document.getElementById('regModal');
                 if (modal.style.display !== 'flex') {
