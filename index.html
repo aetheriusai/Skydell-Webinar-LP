@@ -58,12 +58,13 @@
 
         /* ── URGENCY BAR ── */
         .urgency-bar {
-            background: var(--urgent-red);
+            background: var(--black-light);
+            border-bottom: 1px solid var(--border-teal);
             padding: 10px 24px;
             text-align: center;
             font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--white);
+            font-weight: 600;
+            color: var(--text-bright);
             letter-spacing: 0.04em;
             text-transform: uppercase;
         }
@@ -75,7 +76,7 @@
         /* ── HERO ── */
         .hero {
             position: relative;
-            padding: 56px 24px 44px;
+            padding: 44px 24px 36px;
             text-align: center;
             background: var(--black);
             overflow: hidden;
@@ -109,7 +110,7 @@
             color: var(--urgent-red);
             border: 1px solid rgba(255, 77, 79, 0.3);
             border-radius: 100px;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             background: var(--urgent-red-glow);
         }
 
@@ -138,7 +139,7 @@
             line-height: 1.65;
             color: var(--text-on-dark);
             max-width: 580px;
-            margin: 0 auto 36px;
+            margin: 0 auto 28px;
             font-weight: 400;
         }
 
@@ -155,7 +156,7 @@
             cursor: pointer;
             transition: background 0.25s ease;
             letter-spacing: 0.01em;
-            animation: shake 3s ease-in-out infinite, pulse-glow 2s ease-in-out infinite;
+            animation: none;
         }
 
         .cta-button:hover {
@@ -182,7 +183,7 @@
         .content-section {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 28px 24px;
         }
 
         .section-label {
@@ -350,7 +351,7 @@
             background: var(--black-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 32px 28px;
+            padding: 24px 24px;
             text-align: center;
         }
 
@@ -403,7 +404,7 @@
             background: var(--black);
             border-top: 1px solid var(--border);
             text-align: center;
-            padding: 44px 24px 56px;
+            padding: 32px 24px 40px;
         }
 
         .bottom-cta h2 {
@@ -411,7 +412,7 @@
         }
 
         .bottom-cta .subheadline {
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .urgency-line {
@@ -425,7 +426,7 @@
             text-transform: uppercase;
             padding: 6px 16px;
             border-radius: 4px;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
         /* ── MODAL ── */
@@ -576,7 +577,7 @@
         }
 
         .sticky-bar .cta-button.sticky-cta-shake {
-            animation: shake 3s ease-in-out infinite;
+            animation: none;
         }
 
         .sticky-bar .cta-button.sticky-cta-shake:hover {
@@ -590,7 +591,7 @@
         /* ── FOOTER ── */
         .footer {
             text-align: center;
-            padding: 28px 24px;
+            padding: 20px 24px;
             font-size: 0.72rem;
             color: rgba(176, 191, 207, 0.3);
             background: var(--black);
@@ -602,7 +603,7 @@
             background: var(--black);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            padding: 16px 24px 20px;
+            padding: 12px 24px 16px;
         }
 
         .datetime-inner {
@@ -689,26 +690,21 @@
         }
 
         @media (max-width: 640px) {
-            .hero { padding: 44px 20px 36px; }
+            .hero { padding: 36px 20px 28px; }
             .presenter-grid { grid-template-columns: 1fr; }
             .accordion-body-inner { padding-left: 24px; }
             .who-body-inner { padding-left: 24px; }
             .modal-content { margin: 16px; padding: 32px 24px 28px; }
-            .datetime-section { padding: 20px 20px 24px; }
+            .datetime-section { padding: 14px 20px 18px; }
             .datetime-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- URGENCY BAR -->
-    <div class="urgency-bar">
-        <span class="blink">&#x1F6A8;</span> &nbsp;Quick! Your exclusive spot is reserved for <span id="bar-timer" style="font-weight:900; letter-spacing:0.03em;">10:00</span>&nbsp; <span class="blink">&#x1F6A8;</span>
-    </div>
-
     <!-- STICKY CTA BAR (appears on scroll) -->
     <div class="sticky-bar" id="stickyBar">
-        <span class="sticky-bar-text">Spot reservation expires in <span class="red" id="sticky-timer">10:00</span></span>
+        <span class="sticky-bar-text"><span class="red"><span id="hero-spots-sticky">14</span> of 20 seats remaining</span></span>
         <!-- Updated CTA copy for paid seat flow -->
         <button class="cta-button sticky-cta-shake" onclick="openModal()">Reserve My Seat for $49.99</button>
     </div>
@@ -721,12 +717,13 @@
             <h1>How Clinics Are Adding And Scaling Regenerative Medicine Services <span class="highlight">in 14 days</span> <span class="underline">Without Compliance Risk Or Operational Guesswork</span></h1>
 
             <!-- Updated for paid registration positioning -->
-            <p class="subheadline">Join a physician-only masterclass and learn the infrastructure, compliance, and operational model behind the most successful regenerative medicine clinics.</p>
+            <p class="subheadline">Join a physician-only masterclass and learn the infrastructure, compliance, and operational model behind the most successful regenerative clinics in the country.</p>
 
             <!-- Updated CTA copy for paid seat flow -->
             <button class="cta-button" onclick="openModal()">Reserve My Seat for $49.99</button>
             <span class="seat-note"><span class="red"><span id="hero-spots">14</span> of 20 spots remaining.</span> Registration closes when they fill.</span>
             <span class="seat-note" style="margin-top:6px;">$49.99 one-time registration. Live physician-only session. No replay.</span>
+            <span class="seat-note" style="margin-top:4px;">100% refundable if you cancel up to 24 hours before the session.</span>
         </div>
     </header>
 
@@ -756,67 +753,17 @@
                     </div>
                 </div>
             </div>
+            <div style="text-align:center; margin-top:14px; font-size:0.82rem; color:var(--text-on-dark); font-weight:500;">45-minute live session + 15-minute physician Q&amp;A</div>
         </div>
     </section>
 
-    <!-- WHAT YOU'LL LEARN -->
-    <section class="learn-section" style="background: var(--black-mid); border-top: 1px solid var(--border);">
-        <div class="content-section">
-            <div class="section-label">What You'll Learn</div>
-            <h2>The infrastructure system most clinics never get access to.</h2>
-
-            <div class="accordion-list">
-                <div class="accordion-item">
-                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                        <div class="accordion-trigger-left">
-                            <span class="accordion-num">01</span>
-                            <span class="accordion-title">Plug-and-Play Patient Acquisition</span>
-                        </div>
-                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-body-inner">How partner clinics generate patient demand from day one using a built-in acquisition system — without hiring a marketing team or building campaigns from scratch.</div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                        <div class="accordion-trigger-left">
-                            <span class="accordion-num">02</span>
-                            <span class="accordion-title">The Compliance Backbone</span>
-                        </div>
-                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-body-inner">How HCT/P 361 guidelines and licensed 503A pharmacy sourcing protect your license and your patients. We walk through the regulatory framework most clinics get wrong.</div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                        <div class="accordion-trigger-left">
-                            <span class="accordion-num">03</span>
-                            <span class="accordion-title">The 14-Day Activation Model</span>
-                        </div>
-                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-body-inner">The operational system that takes a clinic from zero regenerative capability to a fully active service line in two weeks — training, sourcing, and patient workflows included.</div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                        <div class="accordion-trigger-left">
-                            <span class="accordion-num">04</span>
-                            <span class="accordion-title">The Full Infrastructure Stack</span>
-                        </div>
-                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-body-inner">Practice management software, clinical protocols, fulfillment logistics, and ongoing support. The complete operational picture from onboarding through first patient.</div>
-                    </div>
-                </div>
+    <!-- SOCIAL PROOF -->
+    <section style="background: var(--black); border-top: 1px solid var(--border);">
+        <div class="content-section" style="max-width:620px; text-align:center;">
+            <div style="background: var(--black-card); border: 1px solid var(--border-teal); border-radius: 10px; padding: 32px 28px;">
+                <div style="font-size: 1.05rem; font-style: italic; line-height: 1.65; color: var(--text-bright); margin-bottom: 16px;">"We went from zero regenerative capability to treating our first patient in 11 days. The compliance infrastructure alone saved us months of guesswork."</div>
+                <div style="font-size: 0.85rem; font-weight: 600; color: var(--teal);">— Dr. Michael Andros, DO · Sports Medicine &amp; Pain Management</div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">Scottsdale, AZ · Skydell Partner Clinic since 2025</div>
             </div>
         </div>
     </section>
@@ -909,6 +856,77 @@
         </div>
     </section>
 
+    <!-- WHAT YOU'LL LEARN -->
+    <section class="learn-section" style="background: var(--black-mid); border-top: 1px solid var(--border);">
+        <div class="content-section">
+            <div class="section-label">What You'll Learn</div>
+            <h2>The infrastructure system most clinics never get access to.</h2>
+
+            <div class="accordion-list">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">01</span>
+                            <span class="accordion-title">Plug-and-Play Patient Acquisition</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">How partner clinics generate patient demand from day one using a built-in acquisition system — without hiring a marketing team or building campaigns from scratch.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">02</span>
+                            <span class="accordion-title">The Compliance Backbone</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">How HCT/P 361 guidelines and licensed 503A pharmacy sourcing protect your license and your patients. We walk through the regulatory framework most clinics get wrong.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">03</span>
+                            <span class="accordion-title">The 14-Day Activation Model</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">The operational system that takes a clinic from zero regenerative capability to a fully active service line in two weeks — training, sourcing, and patient workflows included.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                        <div class="accordion-trigger-left">
+                            <span class="accordion-num">04</span>
+                            <span class="accordion-title">The Full Infrastructure Stack</span>
+                        </div>
+                        <svg class="accordion-icon" viewBox="0 0 20 20"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">Practice management software, clinical protocols, fulfillment logistics, and ongoing support. The complete operational picture from onboarding through first patient.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU WALK AWAY WITH -->
+    <section style="background: var(--black); border-top: 1px solid var(--border);">
+        <div class="content-section" style="text-align:center;">
+            <div class="section-label">After The Session</div>
+            <h2>What you walk away with.</h2>
+            <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-on-dark); max-width: 580px; margin: 0 auto;">Every registered attendee receives a post-session resource packet including the compliance checklist covered in the presentation, a regenerative service line financial model template, and a private link to book a 1-on-1 infrastructure review call with the Skydell team.</p>
+        </div>
+    </section>
+
     <!-- PRESENTER / AUTHORITY -->
     <!-- =============================================
          VARIABLE PLACEHOLDERS — REPLACE BEFORE LAUNCH
@@ -967,7 +985,7 @@
                 <input type="tel" placeholder="Phone Number" required>
                 <input type="email" placeholder="Email Address" required>
                 <!-- Updated CTA copy for paid seat flow -->
-                <button type="submit" class="submit-btn">Continue</button>
+                <button type="submit" class="submit-btn">Continue to Secure Your Seat</button>
             </form>
             <!-- Updated for paid registration positioning -->
             <div class="form-note">Your information is kept confidential and used only to process your registration and send your secure session details.</div>
@@ -979,27 +997,6 @@
         const SPOTS_REMAINING = 14;
         document.getElementById('modal-spots').textContent = SPOTS_REMAINING;
         document.getElementById('hero-spots').textContent = SPOTS_REMAINING;
-
-        // ── 10-MINUTE RESERVATION COUNTDOWN ──
-        let reservationSeconds = 10 * 60;
-        const barTimer = document.getElementById('bar-timer');
-        const stickyTimer = document.getElementById('sticky-timer');
-
-        function updateReservationTimer() {
-            if (reservationSeconds <= 0) {
-                barTimer.textContent = '0:00';
-                stickyTimer.textContent = '0:00';
-                return;
-            }
-            reservationSeconds--;
-            const m = Math.floor(reservationSeconds / 60);
-            const s = reservationSeconds % 60;
-            const display = m + ':' + String(s).padStart(2, '0');
-            barTimer.textContent = display;
-            stickyTimer.textContent = display;
-        }
-
-        setInterval(updateReservationTimer, 1000);
 
         // ── ACCORDION ──
         function toggleAccordion(trigger) {
