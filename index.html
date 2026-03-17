@@ -490,6 +490,30 @@
             text-align: center;
         }
 
+        /* Modal value stack — updated for paid registration positioning */
+        .modal-value-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .modal-value-list li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .modal-value-bullet {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--teal);
+            flex-shrink: 0;
+        }
+
         input {
             width: 100%;
             padding: 13px 14px;
@@ -709,7 +733,8 @@
     <!-- STICKY CTA BAR (appears on scroll) -->
     <div class="sticky-bar" id="stickyBar">
         <span class="sticky-bar-text">Spot reservation expires in <span class="red" id="sticky-timer">10:00</span></span>
-        <button class="cta-button sticky-cta-shake" onclick="openModal()">Reserve My Seat</button>
+        <!-- Updated CTA copy for paid seat flow -->
+        <button class="cta-button sticky-cta-shake" onclick="openModal()">Reserve My Seat for $49.99</button>
     </div>
 
     <!-- HERO -->
@@ -719,10 +744,13 @@
 
             <h1>How Clinics Are Adding and Scaling Regenerative Medicine Services <span class="highlight">in 14 Days</span> <span class="underline">Without Compliance Risk or Operational Guesswork</span></h1>
 
+            <!-- Updated for paid registration positioning -->
             <p class="subheadline">Join a physician-only masterclass and learn the infrastructure system powering the fastest-growing regenerative clinics in the country.</p>
 
-            <button class="cta-button" onclick="openModal()">Reserve My Seat Now</button>
+            <!-- Updated CTA copy for paid seat flow -->
+            <button class="cta-button" onclick="openModal()">Reserve My Seat for $49.99</button>
             <span class="seat-note"><span class="red"><span id="hero-spots">14</span> of 20 spots remaining.</span> Registration closes when they fill.</span>
+            <span class="seat-note" style="margin-top:6px;">$49.99 one-time registration. Live physician-only session. No replay.</span>
         </div>
     </header>
 
@@ -934,10 +962,12 @@
     <!-- BOTTOM CTA -->
     <section class="bottom-cta">
         <div class="urgency-line">&#x1F6A8; Spots are filling — don't wait &#x1F6A8;</div>
-        <h2>20 seats. One session. No replay.</h2>
-        <p class="subheadline">This is a live, physician-only masterclass. If you're serious about adding regenerative services to your clinic, this is the most efficient way to understand what it takes.</p>
-        <button class="cta-button" onclick="openModal()">Reserve My Seat Now</button>
-        <span class="seat-note">April 10, 2026 — 12:00 PM EST</span>
+        <!-- Updated for paid registration positioning -->
+        <h2>20 paid seats. One live session. No replay.</h2>
+        <p class="subheadline">This is a physician-only masterclass with a $49.99 one-time registration fee. If you're serious about adding regenerative services to your clinic, this is the most efficient way to understand what it takes.</p>
+        <!-- Updated CTA copy for paid seat flow -->
+        <button class="cta-button" onclick="openModal()">Reserve My Seat for $49.99</button>
+        <span class="seat-note">April 10, 2026 — 12:00 PM EST · Limited to qualified clinic owners, physicians, and decision-makers.</span>
     </section>
 
     <!-- FOOTER -->
@@ -949,19 +979,30 @@
     <div id="regModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h3>Register for the Masterclass</h3>
-            <p class="form-sub">This session is for licensed physicians and clinic decision-makers only. Enter your details below to receive your access link.</p>
+            <!-- Updated for paid registration positioning -->
+            <h3>Complete Your Registration</h3>
+            <p class="form-sub">This live session is for licensed physicians and clinic decision-makers only. Enter your details below to reserve your seat for the live session.</p>
 
-            <div class="modal-urgency">&#x1F6A8; <span id="modal-spots">14</span> of 20 spots remaining — secure yours now</div>
+            <div class="modal-urgency">&#x1F6A8; <span id="modal-spots">14</span> of 20 paid seats remaining — secure yours now</div>
+
+            <!-- Compact value stack for paid masterclass -->
+            <!-- Updated for paid registration positioning -->
+            <ul class="modal-value-list">
+                <li><span class="modal-value-bullet"></span><span>Live, physician-only training focused on regenerative practice growth.</span></li>
+                <li><span class="modal-value-bullet"></span><span>Operational and compliance framework you can apply in your clinic.</span></li>
+                <li><span class="modal-value-bullet"></span><span>Focused Q&amp;A time for real implementation guidance.</span></li>
+            </ul>
 
             <form action="#" onsubmit="return false;">
                 <input type="text" placeholder="Full Name" required>
                 <input type="text" placeholder="Clinic Name" required>
                 <input type="tel" placeholder="Phone Number" required>
                 <input type="email" placeholder="Email Address" required>
-                <button type="submit" class="submit-btn">Complete Registration</button>
+                <!-- Updated CTA copy for paid seat flow -->
+                <button type="submit" class="submit-btn">Continue to Secure Checkout</button>
             </form>
-            <div class="form-note">Your information is confidential and will only be used to send your webinar access details.</div>
+            <!-- Updated for paid registration positioning -->
+            <div class="form-note">Your information is kept confidential and used only to process your registration and send your secure session details.</div>
         </div>
     </div>
 
