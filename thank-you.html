@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You — Skydell Medical — Physician Webinar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #111111;
+            --teal: #2ec4b6;
+            --teal-dark: #25a79b;
+            --teal-glow: rgba(46, 196, 182, 0.12);
+            --gold: #d6b35a;
+            --urgent-red: #ff4d4f;
+            --urgent-red-glow: rgba(255, 77, 79, 0.15);
+            --white: #ffffff;
+            --text-on-dark: #b0bfcf;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-teal: rgba(46, 196, 182, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--white);
+            background: var(--black);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            background: var(--black-light);
+            border-bottom: 1px solid var(--border-teal);
+            padding: 12px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-on-dark);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .logo-slot {
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+            height: 40px;
+            border: 1px dashed rgba(214, 179, 90, 0.45);
+            color: rgba(214, 179, 90, 0.9);
+            border-radius: 10px;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            font-size: 0.78rem;
+            pointer-events: none;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 760px;
+            padding: 28px 22px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: radial-gradient(ellipse at 40% 30%, var(--teal-glow) 0%, transparent 55%);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.18;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .highlight {
+            color: var(--teal);
+        }
+
+        .gold-accent {
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .subheadline {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--text-on-dark);
+            max-width: 580px;
+            margin: 0 auto 28px;
+            font-weight: 400;
+        }
+
+        .note {
+            margin: 18px 0 26px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-teal);
+            background: rgba(46, 196, 182, 0.04);
+            color: rgba(176, 191, 207, 0.95);
+            line-height: 1.6;
+        }
+
+        .callout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-top: 6px;
+        }
+
+        .number-area {
+            text-align: center;
+            margin: 0 auto 16px;
+        }
+
+        .number-box {
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            text-align: center;
+        }
+
+        .expect-text {
+            font-size: 0.98rem;
+            color: var(--text-on-dark);
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .number-text {
+            margin-top: 10px;
+            font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+
+        .reasons-box {
+            padding: 14px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.12);
+        }
+
+        .reasons-title {
+            font-size: 0.95rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .reasons-list {
+            padding-left: 18px;
+            color: rgba(176, 191, 207, 0.95);
+            line-height: 1.75;
+            font-size: 1.02rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--teal);
+            color: var(--black);
+            padding: 18px 44px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.25s ease;
+            letter-spacing: 0.01em;
+            animation: none;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: var(--teal-dark);
+            animation: none;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(46, 196, 182, 0.3);
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .seat-note {
+            display: block;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: rgba(176, 191, 207, 0.6);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .footer {
+            padding: 20px 24px;
+            text-align: center;
+            color: rgba(176, 191, 207, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="top-bar">
+            <div class="logo-slot">
+                <!-- Replace this placeholder with your Skydell logo image -->
+                SKYDELL
+            </div>
+            &#x1F6A8; You are registered &#x1F6A8;
+        </div>
+
+        <main class="main">
+            <div class="card">
+                <h1>You’re registered<span class="highlight">.</span></h1>
+                <p class="subheadline">Next step is a <span class="gold-accent">quick confirmation call</span>.</p>
+
+                <div class="number-area">
+                    <div class="expect-text">Expect us to reach out on</div>
+                    <div class="number-text">{{NUMBER}}</div>
+                </div>
+
+                <div class="reasons-box">
+                    <div class="reasons-title">To reserve your spot</div>
+                    <div style="color: var(--text-on-dark); font-weight: 600; margin-bottom: 6px;">
+                        We need a short 3 minute call to
+                    </div>
+                    <ul class="reasons-list">
+                        <li>Confirm you’re the clinic owner or lead physician.</li>
+                        <li>Confirm fit for the session.</li>
+                        <li>Walk you through what to expect next.</li>
+                    </ul>
+                </div>
+
+                <div class="actions">
+                    <a class="cta-button" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
+                        Book the 3 minute confirmation call
+                    </a>
+                    <span class="seat-note">Prefer we call you? Reply to the text we send you.</span>
+                </div>
+            </div>
+        </main>
+
+        <div class="footer">
+            &copy; 2026 Skydell Medical, LLC. All rights reserved. This webinar is educational in nature and does not constitute medical advice.
+        </div>
+    </div>
+</body>
+</html>
+
