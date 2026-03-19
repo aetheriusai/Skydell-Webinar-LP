@@ -112,11 +112,6 @@
             object-fit: contain;
         }
 
-        .hero-logo {
-            justify-content: flex-start;
-            margin: 0 0 18px 0;
-        }
-
         .footer-logo {
             justify-content: center;
             margin: 0 0 12px 0;
@@ -390,19 +385,35 @@
             text-align: center;
         }
 
+        .presenter-head {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 0 auto 16px;
+            flex-wrap: nowrap;
+        }
+
         .presenter-avatar {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             background: rgba(46, 196, 182, 0.08);
             border: 2px solid var(--border-teal);
-            margin: 0 auto 16px;
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
             color: var(--teal);
             font-weight: 700;
+        }
+
+        .presenter-logo-inline img {
+            width: 185px;
+            height: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .presenter-name {
@@ -778,9 +789,6 @@
     <!-- HERO -->
     <header class="hero">
         <div class="hero-inner">
-            <div class="brand-logo hero-logo">
-                <img src="Logo-Skydell-Medical-4.jpg" alt="Skydell Medical logo">
-            </div>
             <span class="badge">&#x203C;&#xFE0F; Physician Masterclass — April 10, 2026 — 20 Seats Only</span>
 
             <h1>How Clinics Are Adding And Scaling Regenerative Medicine Services <span class="highlight">in 14 days</span> <span class="underline">Without Compliance Risk Or Operational Guesswork</span></h1>
@@ -841,8 +849,13 @@
 
             <div class="presenter-grid" style="grid-template-columns: 1fr; max-width: 480px; margin: 0 auto;">
                 <div class="presenter-card">
-                    <!-- REPLACE: Swap initials div for <img> tag with headshot -->
-                    <div class="presenter-avatar">FL</div>
+                    <div class="presenter-head">
+                        <!-- REPLACE: Swap initials div for <img> tag with headshot -->
+                        <div class="presenter-avatar">FL</div>
+                        <div class="brand-logo presenter-logo-inline">
+                            <img src="Logo-Skydell-Medical-4.jpg" alt="Skydell Medical logo">
+                        </div>
+                    </div>
                     <!-- REPLACE: Full name -->
                     <div class="presenter-name">[Dr. Felix Lurye]</div>
                     <!-- REPLACE: Title / credential line -->
