@@ -401,12 +401,20 @@
             background: rgba(46, 196, 182, 0.08);
             border: 2px solid var(--border-teal);
             margin: 0;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
             color: var(--teal);
             font-weight: 700;
+        }
+
+        .presenter-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .presenter-logo-inline img {
@@ -850,22 +858,20 @@
             <div class="presenter-grid" style="grid-template-columns: 1fr; max-width: 480px; margin: 0 auto;">
                 <div class="presenter-card">
                     <div class="presenter-head">
-                        <!-- REPLACE: Swap initials div for <img> tag with headshot -->
-                        <div class="presenter-avatar">FL</div>
+                        <div class="presenter-avatar">
+                            <img src="WhatsApp Image 2026-03-19 at 13.34.10.jpeg" alt="Dr. Felix Lurye headshot">
+                        </div>
                         <div class="brand-logo presenter-logo-inline">
                             <img src="Logo-Skydell-Medical-4.jpg" alt="Skydell Medical logo">
                         </div>
                     </div>
-                    <!-- REPLACE: Full name -->
-                    <div class="presenter-name">[Dr. Felix Lurye]</div>
-                    <!-- REPLACE: Title / credential line -->
-                    <div class="presenter-title">[Title / Credential — e.g. "Medical Director, Skydell Medical"]</div>
-                    <!-- REPLACE: 1-2 sentence bio focused on authority -->
-                    <p class="presenter-bio">[Bio placeholder — e.g. "Co-architect of Florida's regenerative medicine compliance framework. XX years in regenerative medicine. Licensed in XX states."]</p>
+                    <div class="presenter-name">Dr. Felix Lurye, MD, QME</div>
+                    <div class="presenter-title">Double Board Certified Specialist: Interventional Pain Management &amp; Anesthesiology | Florida Legislative Architect | FDA-Compliant Stem Cell Application Educator</div>
+                    <p class="presenter-bio">Dr. Felix Lurye combines board-certified clinical expertise with hands-on regulatory leadership to help physicians launch regenerative services safely, quickly, and compliantly.</p>
                 </div>
             </div>
 
-            <div class="presenter-note">Replace bracketed content with final bio and swap avatar div for headshot image before launch.</div>
+            <div class="presenter-note">Live physician-led training with implementation-focused guidance for compliant regenerative program rollout.</div>
         </div>
     </section>
 
