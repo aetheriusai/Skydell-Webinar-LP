@@ -48,29 +48,18 @@
             color: var(--text-on-dark);
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            position: relative;
         }
 
-        .logo-slot {
-            position: absolute;
-            left: 24px;
-            top: 50%;
-            transform: translateY(-50%);
+        .main-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 140px;
-            height: 40px;
-            border: none;
-            color: rgba(214, 179, 90, 0.9);
-            border-radius: 10px;
-            font-weight: 900;
-            letter-spacing: 0.06em;
-            font-size: 0.78rem;
-            pointer-events: none;
+            width: 220px;
+            height: 54px;
+            margin: 0 auto 16px;
         }
 
-        .logo-slot img {
+        .main-logo img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
@@ -239,14 +228,14 @@
 <body>
     <div class="wrap">
         <div class="top-bar">
-            <div class="logo-slot">
-                <img src="Logo-Skydell-Medical-4.jpg" alt="Skydell logo">
-            </div>
             &#x1F6A8; You are registered &#x1F6A8;
         </div>
 
         <main class="main">
             <div class="card">
+                <div class="main-logo">
+                    <img src="Logo-Skydell-Medical-4.jpg" alt="Skydell logo">
+                </div>
                 <h1>You’re registered<span class="highlight">.</span></h1>
                 <p class="subheadline">Next step is a <span class="gold-accent">quick confirmation call</span>.</p>
 
