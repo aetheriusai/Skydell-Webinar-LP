@@ -1096,6 +1096,14 @@
     </div>
 
     <script>
+        // Move image 1 beneath the fold, directly under session details.
+        const heroImage = document.querySelector('.hero-pic');
+        const sessionDetails = document.querySelector('.datetime-section');
+        if (heroImage && sessionDetails) {
+            sessionDetails.insertAdjacentElement('afterend', heroImage);
+            heroImage.style.marginTop = '0';
+        }
+
         // Move case study below "Who This Is For" for clearer flow.
         const socialProof = document.getElementById('social-proof');
         const whoSection = document.querySelector('.who-section');
