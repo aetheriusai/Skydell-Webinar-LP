@@ -6,28 +6,47 @@
     <title>Thank You — Skydell Medical — Physician Webinar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Original palette (for quick revert)
+           --black: #000000;
+           --black-light: #111111;
+           --teal: #2ec4b6;
+           --teal-dark: #25a79b;
+           --teal-glow: rgba(46, 196, 182, 0.12);
+           --gold: #d6b35a;
+           --urgent-red: #ff4d4f;
+           --urgent-red-glow: rgba(255, 77, 79, 0.15);
+           --text-on-dark: #b0bfcf;
+           --border: rgba(255, 255, 255, 0.06);
+           --border-teal: rgba(46, 196, 182, 0.12);
+        */
         :root {
-            --black: #000000;
-            --black-light: #111111;
-            --teal: #2ec4b6;
-            --teal-dark: #25a79b;
-            --teal-glow: rgba(46, 196, 182, 0.12);
-            --gold: #d6b35a;
-            --urgent-red: #ff4d4f;
-            --urgent-red-glow: rgba(255, 77, 79, 0.15);
+            --black: #f9fafe;
+            --black-light: #f6f3f5;
+            --teal: #0e5b9c;
+            --teal-dark: #08375e;
+            --teal-glow: rgba(14, 91, 156, 0.12);
+            --gold: #ff9900;
+            --urgent-red: #dc3545;
+            --urgent-red-glow: rgba(220, 53, 69, 0.15);
             --white: #ffffff;
-            --text-on-dark: #b0bfcf;
-            --border: rgba(255, 255, 255, 0.06);
-            --border-teal: rgba(46, 196, 182, 0.12);
+            --page-text: #212529;
+            --text-on-dark: #4d5b7c;
+            --border: rgba(222, 226, 230, 0.9);
+            --border-teal: rgba(14, 91, 156, 0.28);
+            --hero-bg-1: #060d1a;
+            --hero-bg-2: #232f3e;
+            --hero-text: #ffffff;
+            --hero-text-on-dark: #94b4d4;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            color: var(--white);
+            font-family: 'Manrope', sans-serif;
+            color: var(--page-text);
             background: var(--black);
             -webkit-font-smoothing: antialiased;
         }
@@ -89,6 +108,7 @@
             line-height: 1.18;
             margin-bottom: 20px;
             letter-spacing: -0.02em;
+            font-family: 'Poppins', sans-serif;
         }
 
         .highlight {
@@ -114,8 +134,8 @@
             padding: 14px 16px;
             border-radius: 10px;
             border: 1px solid var(--border-teal);
-            background: rgba(46, 196, 182, 0.04);
-            color: rgba(176, 191, 207, 0.95);
+            background: rgba(14, 91, 156, 0.04);
+            color: rgba(33, 37, 41, 0.75);
             line-height: 1.6;
         }
 
@@ -128,7 +148,11 @@
 
         .number-area {
             text-align: center;
-            margin: 0 auto 16px;
+            margin: 0 auto 22px;
+            padding: 18px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(14, 91, 156, 0.22);
+            background: linear-gradient(180deg, rgba(14, 91, 156, 0.06) 0%, rgba(246, 243, 245, 1) 100%);
         }
 
         .number-box {
@@ -156,10 +180,11 @@
         }
 
         .reasons-box {
-            padding: 14px 14px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: rgba(0, 0, 0, 0.12);
+            padding: 20px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(14, 91, 156, 0.44);
+            background: linear-gradient(180deg, var(--hero-bg-1), var(--hero-bg-2));
+            margin: 18px 0 26px;
         }
 
         .reasons-title {
@@ -167,14 +192,14 @@
             font-weight: 900;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--white);
-            margin-bottom: 10px;
+            color: var(--hero-text);
+            margin-bottom: 14px;
             text-align: left;
         }
 
         .reasons-list {
             padding-left: 18px;
-            color: rgba(176, 191, 207, 0.95);
+            color: var(--hero-text-on-dark);
             line-height: 1.75;
             font-size: 1.02rem;
         }
@@ -182,11 +207,11 @@
         .cta-button {
             display: inline-block;
             background: var(--teal);
-            color: var(--black);
+            color: var(--white);
             padding: 18px 44px;
             font-size: 1.05rem;
             font-weight: 700;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Manrope', sans-serif;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -200,18 +225,19 @@
             background: var(--teal-dark);
             animation: none;
             transform: translateY(-1px);
-            box-shadow: 0 8px 28px rgba(46, 196, 182, 0.3);
+            box-shadow: 0 8px 28px rgba(14, 91, 156, 0.3);
         }
 
         .actions {
             text-align: center;
+            margin-top: 4px;
         }
 
         .seat-note {
             display: block;
             margin-top: 14px;
             font-size: 0.8rem;
-            color: rgba(176, 191, 207, 0.6);
+            color: rgba(33, 37, 41, 0.55);
             font-weight: 400;
             line-height: 1.5;
         }
@@ -219,7 +245,7 @@
         .footer {
             padding: 20px 24px;
             text-align: center;
-            color: rgba(176, 191, 207, 0.6);
+            color: rgba(33, 37, 41, 0.55);
             font-size: 0.9rem;
             border-top: 1px solid var(--border);
         }
@@ -234,7 +260,7 @@
         <main class="main">
             <div class="card">
                 <div class="main-logo">
-                    <img src="Logo-Skydell-Medical-4.jpg" alt="Skydell logo">
+                    <img src="Logo Skydell Medical-01.svg" alt="Skydell logo">
                 </div>
                 <h1>You’re registered<span class="highlight">.</span></h1>
                 <p class="subheadline">Next step is a <span class="gold-accent">quick confirmation call</span>.</p>
@@ -246,7 +272,7 @@
 
                 <div class="reasons-box">
                     <div class="reasons-title">To reserve your spot</div>
-                    <div style="color: var(--text-on-dark); font-weight: 600; margin-bottom: 6px;">
+                    <div style="color: var(--hero-text-on-dark); font-weight: 600; margin-bottom: 6px;">
                         We need a short 3 minute call to
                     </div>
                     <ul class="reasons-list">
